@@ -14,7 +14,7 @@ export default function Program(props) {
     }, [props.match.params.id])
 
     function getProgramcontent(props){
-        fetch(`http://localhost:1337/programs/${props.match.params.id}`)
+        fetch(`https://changing-ways.herokuapp.com/programs/${props.match.params.id}`)
         .then(response => response.json())
         .then(data => setProgram(data))
     }

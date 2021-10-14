@@ -14,7 +14,7 @@ export default function Faq() {
     }, []);
 
     function getFaqs(){
-        fetch('http://localhost:1337/faq-categories')
+        fetch('https://changing-ways.herokuapp.com/faq-categories')
         .then(response => response.json())
         .then(data => setFaqs(data))
     }

@@ -12,7 +12,7 @@ export default function Counselors() {
     }, [])
 
     function getCounselors(){
-        fetch('http://localhost:1337/counselors')
+        fetch('https://changing-ways.herokuapp.com/counselors')
         .then(response => response.json())
         .then(data => setCounselors(data))
     }
@@ -29,7 +29,7 @@ export default function Counselors() {
            </Helmet>
             {counselors.map(counselor => (
                 <div key={counselor.id} className="counselor">
-                <img alt={counselor.name} src={`http://localhost:1337${counselor.image[0].url}`} />
+                <img alt={counselor.name} src={`${counselor.image[0].url}`} />
                 <div className="id">
                     <h3>{counselor.name}</h3>
                     <h4>{counselor.title}</h4>

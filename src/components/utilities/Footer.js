@@ -16,25 +16,25 @@ export default function Footer() {
 
     /* Fetch Footer Data */
     function getAboutText(){
-        fetch('http://localhost:1337/about')
+        fetch('https://changing-ways.herokuapp.com/about')
         .then(response => response.json())
         .then(data => setAboutText(data))
     }
 
     function getHotlines(){
-        fetch('http://localhost:1337/hotlines')
+        fetch('https://changing-ways.herokuapp.com/hotlines')
         .then(response => response.json())
         .then(data => setHotlines(data))
     }
 
     function getLinks(){
-        fetch('http://localhost:1337/links')
+        fetch('https://changing-ways.herokuapp.com/links')
         .then(response => response.json())
         .then(data => setLinks(data))
     }
 
     function getPartners(){
-        fetch('http://localhost:1337/partners')
+        fetch('https://changing-ways.herokuapp.com/partners')
         .then(response => response.json())
         .then(data => setPartners(data))
     }
@@ -70,7 +70,7 @@ export default function Footer() {
             <div className="partners">
                     {partners.map(partner => (
                         <a href={partner.link}>
-                            <img key={partner.id} src={`http://localhost:1337${partner.logo.url}`} alt={partner.title} />
+                            <img key={partner.id} src={`${partner.logo.url}`} alt={partner.title} />
                         </a>
                     ))}
             </div>

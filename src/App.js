@@ -19,7 +19,7 @@ function App() {
   }, [])
 
   function fetchPrograms(){
-    fetch('http://localhost:1337/programs')
+    fetch('https://changing-ways.herokuapp.com/programs')
         .then(response => response.json())
         .then(data => setPrograms(data))
   }

@@ -22,12 +22,12 @@ function Homepage(props) {
     }, []);
 
     function getCalendarEvents(){
-        fetch('http://localhost:1337/calendar-events')
+        fetch('https://changing-ways.herokuapp.com/calendar-events')
         .then(response => response.json())
         .then(data => setCalendarEvents(data))
     }
     function getAbout(){
-        fetch('http://localhost:1337/about')
+        fetch('https://changing-ways.herokuapp.com/about')
         .then(response => response.json())
         .then(data => setAbout(data) )
     }
