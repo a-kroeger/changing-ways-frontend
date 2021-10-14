@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react'
-// import Calendar from '@toast-ui/react-calendar'
+import { Helmet } from "react-helmet"
+import ReactMarkdown from 'react-markdown'
 import CalendarWrapper from '../utilities/CalendarWrapper'
+import gsap from 'gsap'
 
 export default function Program(props) {
 
-    const [program, setProgram, calendarEvents, setCalendarEvents] = useState([])
+    const [program, setProgram] = useState([])
 
     useEffect(() => {
         getProgramcontent(props);
-    }, [])
+        loadingAnimation();
+    }, [props.match.params.id])
 
-    // Make API call with URL Parameters
     function getProgramcontent(props){
         fetch(`http://localhost:1337/programs/${props.match.params.id}`)
         .then(response => response.json())
         .then(data => setProgram(data))
+    }
+
+    function loadingAnimation(){
+        gsap.from('.card', { opacity: 0, duration: .7, stagger: .15 })
     }
 
     const {
@@ -32,31 +38,37 @@ export default function Program(props) {
 
     return (
        <main className="content">
+           <Helmet>
+               <title>{`${title} | Changing Ways `}</title>
+               <meta name="description" content ={description}></meta>
+           </Helmet>
             <div className="container">
-            <div className="cards">
-                <div className="left-border card">
-                    <h1>{title}</h1>
-                    <p>{description}</p>
+                <div className="cards">
+                    <div className="left-border card">
+                        <h1>{title}</h1>
+                        <p>{description}</p>
+                    </div>
+                    {blockOne && <ReactMarkdown className="card" children={blockOne} />}
+                    {/* <div className="card">
+                        <h3>How to Sign Up</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis molestiae fugit libero rerum voluptates. Quisquam aut maxime sunt. Accusantium iusto neque officiis repudiandae assumenda placeat, odit aliquam quam vero esse nobis amet eos perferendis repellat, veritatis reiciendis, voluptatibus harum. Nesciunt?</p>
+                    </div> */}
                 </div>
-                <div className="card">
-                    <h3>How to Sign Up</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis molestiae fugit libero rerum voluptates. Quisquam aut maxime sunt. Accusantium iusto neque officiis repudiandae assumenda placeat, odit aliquam quam vero esse nobis amet eos perferendis repellat, veritatis reiciendis, voluptatibus harum. Nesciunt?</p>
-                    <a href="">Already an Owl Practice Member? Click Here</a>
-                </div>
+                {resources && <div className="resources">
+                    <div className="card">
+                        <h3>Resources</h3>
+                        <ReactMarkdown children={resources} />
+                    </div>
+                </div>}
             </div>
-            <div className="resources">
-                <div className="card">
-                    <h3>Resources</h3>
-                    <a href="">Example Link</a>
-                    <a href="">Example Link</a>
-                    <a href="">Example Link</a>
-                    <a href="">Example Link</a>
-                </div>
-            </div>
-        </div>
-        <div className="card">
+            <div className="card calendar">
                 <CalendarWrapper events={calendar_events} />
             </div>
+            {/* {blockOne && <ReactMarkdown className="card" children={blockOne} />} */}
+            {blockTwo && <ReactMarkdown className="card" children={blockTwo} />}
+            {blockThree && <ReactMarkdown className="card" children={blockThree} />}
+            {blockFour && <ReactMarkdown className="card" children={blockFour} />}
+            {blockFive && <ReactMarkdown className="card" children={blockFive} />}
        </main>
     )
 }

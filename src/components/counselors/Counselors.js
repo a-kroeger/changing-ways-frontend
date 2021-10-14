@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Helmet } from "react-helmet"
 import gsap from "gsap"
 
 export default function Counselors() {
@@ -22,6 +23,10 @@ export default function Counselors() {
 
     return (
        <div className="counselors">
+           <Helmet>
+               <title>Our Counselors | Changing Ways</title>
+               <meta description="description" content="A list of all the counselors and professionals who associate with and support Changing Ways "/>
+           </Helmet>
             {counselors.map(counselor => (
                 <div key={counselor.id} className="counselor">
                 <img alt={counselor.name} src={`http://localhost:1337${counselor.image[0].url}`} />

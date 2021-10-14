@@ -5,36 +5,35 @@ import CuratorWidget from '../utilities/CuratorWidget'
 import GradientLink from './GradientLink'
 import 'tui-calendar/dist/tui-calendar.css'
 import BGImage from './background.svg'
+import Helmet from 'react-helmet'
 import gsap from "gsap"
 
-function Homepage() {
+function Homepage(props) {
 
     /* Initialize State */
     const [calendarEvents, setCalendarEvents] = useState([])
-    const [programs, setPrograms] = useState([])
+    const [about, setAbout] = useState([])
     
     /* OnLoad Functions */
     useEffect(()=>{
-        getPrograms();
         getCalendarEvents();
+        getAbout()
         loadingAnimation();
     }, []);
-
-    function getPrograms(){
-        fetch('http://localhost:1337/programs')
-        .then(response => response.json())
-        .then(data => setPrograms(data))
-    }
 
     function getCalendarEvents(){
         fetch('http://localhost:1337/calendar-events')
         .then(response => response.json())
         .then(data => setCalendarEvents(data))
     }
+    function getAbout(){
+        fetch('http://localhost:1337/about')
+        .then(response => response.json())
+        .then(data => setAbout(data) )
+    }
 
     function loadingAnimation(){
         gsap.from('.react-parallax-background-children', { duration: 4, top:'-300px', ease: 'back' })
-        gsap.from('.card', { height: '500px', duration: 1, delay: .35 })
         gsap.from('.card h1, .card p, .card', { opacity: 0, duration: .6, delay: 1 })
         gsap.from('.program-links', { opacity: 0, duration: .3, delay: 1 })
     }
@@ -50,10 +49,14 @@ function Homepage() {
                 }}
             />
         </Background>
+        <Helmet>
+            <title>Changing Ways</title>
+            <meta name="description" content={about.about}/>
+        </Helmet>
         <div className="content">
             <div className="top">
                 <div className="program-links">
-                    {programs.map(program => (
+                    {props.programs.map(program => (
                         <GradientLink 
                             program={program}
                             key={program.id}
@@ -62,10 +65,10 @@ function Homepage() {
                 </div>
                 <div className="left-border card">
                     <h1>Changing Ways</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, iste, corporis quae dolore dolores itaque amet, debitis neque modi vero omnis nihil? Doloremque aspernatur modi aliquam minus velit molestiae expedita quasi harum et rem consequuntur ex recusandae, doloribus, architecto nemo.</p>
+                    <p>{about.about}</p>
                 </div>
             </div>
-            <div className="card">
+            <div className="card calendar">
                 <CalendarWrapper
                     events={calendarEvents}
                 />

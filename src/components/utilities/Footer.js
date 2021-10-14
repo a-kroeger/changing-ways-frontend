@@ -69,7 +69,9 @@ export default function Footer() {
             </div>
             <div className="partners">
                     {partners.map(partner => (
-                        <img key={partner.id} src={`http://localhost:1337${partner.logo.url}`} alt={partner.title} />
+                        <a href={partner.link}>
+                            <img key={partner.id} src={`http://localhost:1337${partner.logo.url}`} alt={partner.title} />
+                        </a>
                     ))}
             </div>
         </footer>

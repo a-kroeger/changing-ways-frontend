@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Question from './Question'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import gsap from 'gsap'
+import { Helmet } from "react-helmet"
 
 export default function Faq() {
 
@@ -25,11 +26,15 @@ export default function Faq() {
 
     return (
         <main className="faq">
-        <div className="question-categories">
+            <Helmet>
+                <title>Frequently Asked Questions</title>
+                <meta description="description" content="A comprehensive list of all the most frequently asked questions about what Changing Ways is, who we are sponsored by, how you can sign up for programs, and more."/>
+            </Helmet>
+        {faqs.length > 2 && <div className="question-categories">
             {faqs.map(faq => (
-                <AnchorLink offset='100' href={`#${faq.id}`}>{faq.category}</AnchorLink>
+                <AnchorLink key={faq.id + 1000} offset='100' href={`#${faq.id}`}>{faq.category}</AnchorLink>
             ))}
-        </div>
+        </div>}
         <div className="questions">
             <h1>Frequently Asked Questions</h1>
             {faqs.map(faq => (

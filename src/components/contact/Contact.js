@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from "gsap"
+import { Helmet } from "react-helmet"
 
 export default function Contact() {
 
@@ -10,9 +11,13 @@ export default function Contact() {
     }, [])
 
     return (
-        <main class="contact-landing">
-        <h1>What can we help you with today?</h1>
-        <div class="contact-links">
+        <main className="contact-landing">
+            <Helmet>
+                <title>Contact Us | Changing Ways</title>
+                <meta description="Get in touch with one of our professionals today."/>
+            </Helmet>
+            <h1>What can we help you with today?</h1>
+        <div className="contact-links">
             <Link to="/inquiries">General Inquiries</Link>
             <Link to="/referrals">Program Referrals</Link>
         </div>
