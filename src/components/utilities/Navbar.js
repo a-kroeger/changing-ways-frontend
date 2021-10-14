@@ -25,7 +25,7 @@ export default function Navbar(props) {
     return (
         <nav className={burgIsActive ? 'full-length' : null}>
             <Link onClick={handleCollapse} to="/" className="logo">
-                <img src={logo} alt="Family Violence Action Society" srcSet="" />
+                <img src='https://res.cloudinary.com/detour-digital/image/upload/v1634227716/logo_d74215628e.png?60193.799999952316' alt="Family Violence Action Society" srcSet="" />
             </Link>
             <div className={`${burgIsActive ? 'reveal-links' : null} links`}>
                 <div onClick={programLinkToggle} className='programs'>
