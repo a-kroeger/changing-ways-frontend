@@ -19,7 +19,7 @@ pre
 {
     font-size: 100%;
     font-weight: normal;
-
+    font-family: 'Graphie', Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 
@@ -49,7 +49,7 @@ img
 }
 /* Global */
 :root {
-  --border-style: 4px solid #5417EB
+  --border-style: 3px solid #000
 }
 svg {
   display: block;
@@ -59,42 +59,29 @@ svg {
 nav {
   position: fixed;
   z-index: 99999;
-  background: linear-gradient(90deg, rgba(17,157,183,1) 36%, rgba(84,23,235,1) 100%);
-  height: 34px;
+  background: #fff;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   width: 100vw;
   transition: height 400ms ease;
+  border-bottom: var(--border-style);
 }
 .hamburger-menu {
   display: none;
 }
-.logo {
-  position: relative;
-  top: -80px;
-  left: -110px;
-  width: 220px;
-  height: 220px;
-  background: #fff;
-  border-radius: 100%;
-  border: 34px solid rgb(17,157,183);
-}
-.logo img {
-  position: inherit;
-  top: 42px;
-  left: 55px;
-  height: 70%;
-  width: 70%;
+.logo img{
+  height: 50px;
 }
 .links {
   display: inherit;
 }
 .links a, .dropdown {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Graphie', Helvetica, sans-serif;
   position: relative;
-  color: #fff;
+  color: #000;
   text-decoration: none;
-  padding: 5px;
+  padding: 13px;
   margin-left: 30px;
 }
 .links a:last-child {
@@ -120,8 +107,8 @@ nav {
 .drop-links {
   display: flex;
   flex-direction: column;
-  background: #F6F6F6;
-  border-left: 4px solid #5417EB;
+  background: #FFF;
+  border-left: 4px solid #8DC63F;
   visibility: hidden;
   height: 0;
 }
@@ -136,8 +123,7 @@ nav {
   transition: all 100ms linear;
 }
 .drop-links a:hover {
-  background: #fff;
-  color: #5417EB;
+  color: #9758a3;
 }
 
 /* Footer Styling */
@@ -214,20 +200,20 @@ footer {
  width: 80%;
  max-width: 1500px;
  margin: auto;
+ min-height: 100vh;
 }
 .card {
-  background: #F6F6F6;
+  background: #fff;
   margin: 50px 0;
   border-top: var(--border-style);
   padding: 30px;
-  box-shadow: 5px 7px 12px #999;
 }
 .content > .card:last-child{
   margin-bottom: 200px;
 }
 .card h1 {
-  color: #5417EB;
-  font-size: 1.6rem;
+  color: #9758a3;
+  font-size: 2.2rem;
   margin-bottom: 10px;
   font-weight: 600;
 }
@@ -238,6 +224,7 @@ footer {
   margin-bottom: 10px;
 }
 .card p {
+  color: #9758a3;
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.1rem;
@@ -246,7 +233,7 @@ footer {
   display: block;
   text-decoration: none;
   line-height: 1.6;
-  color: #5417EB;
+  color: #329ad6;
 }
 .cards .card {
   width: 90%;
@@ -278,11 +265,11 @@ footer {
 .gradient {
   transition: all 200ms ease;
   margin: 5px auto;
-  border-radius: 50px;
   font-weight: 300;
   text-align: center;
   position: relative;
-  background-image: linear-gradient(90deg, rgba(17,157,183,1) 36%, rgba(84,23,235,1) 100%);
+  background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(141,198,63,1) 100%);
+  border-radius: 50px;
   z-index: 1;
 }
 .gradient::before {
@@ -292,7 +279,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(90deg, rgba(84,23,235,1) 36%, rgba(17,157,183,1) 100%);
+  background-image: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(50,154,214,0.8365998000241397) 100%);
   z-index: -1;
   transition: opacity 0.26s ease-in;
   opacity: 0;
@@ -302,11 +289,11 @@ footer {
   opacity: 1;
 }
 .gradient a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
-  line-height: 2.2;
+  line-height: 3.5;
   display: inline-block;
-  width: 230px;
+  min-width: 230px;
 }
 /* Program Page Styling */
 .container {
@@ -361,16 +348,15 @@ footer {
 }
 .counselor .id {
   position: absolute;
-  background: #5417EB;
-  padding: 10px 5px 15px 72px;
-  width: 235px;
+  background: #9758a3;
+  padding: 10px 5px 15px 100px;
+  min-width: 207px;
   z-index: 5;
   color: #fff;
 }
 .id h3, .id h4 {
-  position: relative;
-  left: 30px;
   font-weight: 100;
+  /* white-space: nowrap; */
 }
 .id h3 {
   font-size: 1.6rem;
@@ -386,10 +372,11 @@ footer {
   background: #F6F6F6;
   border-radius: 250px 0 0 0;
   box-shadow: 5px 7px 12px #999;
+  min-height: 100px;
 
 }
 .counselor img, .counselor p {
-  border: 4px solid #5417EB;
+  border: 4px solid #000;
 }
 
 /* FAQ */
@@ -405,7 +392,7 @@ footer {
   padding: 25px 50px;
   justify-content: center;
   overflow: hidden;
-  background: #5417EB;
+  background: #9758a3;
   border-radius: 0 70% 70% 0/ 0 25% 30% 0;
   top: -10px;
 }
@@ -416,7 +403,7 @@ footer {
   font-size: 1rem;
 }
 .faq h1 {
-  color: #5417EB;
+  color: #9758a3;
   font-size: 2rem;
 }
 .questions {
@@ -429,6 +416,7 @@ footer {
 .question {
   margin: 10px 0;
   height: 20px;  
+  background: #f8f8f8;
   transform-origin: top; 
   overflow: hidden;
   -webkit-touch-callout: none;
@@ -453,7 +441,7 @@ footer {
 }
 .question > .dropdown {
   margin-left: 0;
-  color: #5417EB;
+  color: #9758a3;
   font-weight: 600;
 }
 .question > .dropdown:after {
@@ -483,6 +471,7 @@ footer {
 /* Contact Landing */
 .contact-landing {
   padding-top: 270px;
+  padding-bottom: 270px;
   text-align: center;
   min-height: 70vh;
   max-width: 1000px;
@@ -499,7 +488,7 @@ footer {
 }
 .contact-links a {
   text-decoration: none;
-  background: #119DB7;
+  background: #329ad6;
   color: #fff;
   font-weight: 200;
   font-size: 1.3rem;
@@ -512,7 +501,7 @@ footer {
   opacity: 0.8;
 }
 .contact-links a:nth-child(2) {
-  background: #5417EB;
+  background: #9758a3;
 }
 
 /* Referrals and Inquiries Forms */
@@ -529,7 +518,7 @@ footer {
 }
 form > h1 {
   font-size: 2rem;
-  color: #5417EB;
+  color: #9758a3;
 }
 form > .card {
   padding: 9px;
@@ -550,13 +539,13 @@ input, textarea {
   width: 90vw;
   max-width: 900px;
   margin: 10px auto;
-  border: #5417EB 2px solid;
+  border: #9758a3 2px solid;
   border-radius: 50px;
   padding: 15px;
 }
 textarea {
   height: 100px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Graphie', Helvetica, sans-serif;
 }
 input[type="radio"]{
   width: auto;
@@ -570,7 +559,7 @@ input[type="submit"]{
   border: none;
   margin-top: 50px;
   color: #fff;
-  background: #5417EB;
+  background: #329ad6;
   transition: all 100ms linear;
   cursor: pointer;
 }
@@ -583,7 +572,7 @@ form > div > p {
   position: relative;
   left: 40px;
   top: 19px;
-  color: #5417EB;
+  color: #9758a3;
   background: #fff;
   width: fit-content;
   padding: 0 10px;
@@ -616,21 +605,25 @@ form > .card > p {
 }
 
 /* Calendar Styling Override */
-.tui-full-calendar-layout {
-  background-color: #F6F6F6 !important;
+.card.calendar > div:last-child{
+  height: 500px !important;
+  overflow: hidden !important;
+}
+.tui-full-calendar-vlayout-container {
+  min-height: none !important;
 }
 .tui-full-calendar-weekday-schedule {
-  background-color: #119DB7 !important;
+  background-color: #329ad6 !important;
 }
 .tui-full-calendar-popup-top-line {
-  background-color: #5417EB !important;
+  background-color: #8dc63f !important;
 }
 .tui-full-calendar-weekday-grid-date-decorator {
-  background: #5417EB !important;
+  background: #8dc63f !important;
 }
 .tui-full-calendar-weekday-schedule-title {
   display: inline-flex !important;
-  background: #119DB7 !important;
+  background: #329ad6 !important;
   padding-right: 8px;
   color: #fff !important;
   font-weight: 300 !important;
@@ -644,8 +637,11 @@ form > .card > p {
 }
 .tui-full-calendar-popup-detail-date{
  font-size: 0.8rem !important;
- color: #5417EB;
+ color: #9758a3;
  margin-bottom: 30px;
+}
+.tui-view-7 {
+  height: 450px !important;
 }
 /* Custom Calendar Elements */
 .calendar_buttons {
@@ -654,15 +650,16 @@ form > .card > p {
 }
 .calendar_control {
   padding: 10px;
+  margin-bottom: 5px;
   border: none;
-  background: #5417EB;
+  background: #9758a3;
   border-radius: 12px;
   color: #fff;
   transition: color 100ms linear;
 }
 .calendar_control:hover, .calendar_control:focus {
   cursor: pointer;
-  background: #119DB7;
+  background: #8dc63f;
   color: #111;
 }
 
@@ -673,11 +670,24 @@ form > .card > p {
 .crt-widget {
   margin-bottom: 120px !important;
 }
+#root > div > div.react-parallax-content > div > div.crt.crt-widget.crt-touch.crt-widget-theme-sydney.crt-stack.crt-widget-stack.crt-widget-branded > div > div > div > div.crt-stack-content > div,
+#root > div > div.react-parallax-content > div > div.crt.crt-widget.crt-touch.crt-widget-theme-sydney.crt-stack.crt-widget-stack.crt-widget-branded > div > div > div > div.crt-stack-content > div > div {
+  padding: 0 !important;
+}
+.arrow-right-icon,
+.arrow-left-icon,
+.crt-stack-post-text-footer,
+.center-body::after,
+.crt-stacked-card:first-child
+{
+  display: none !important;
+}
+
 
 @media screen and (max-width: 1540px) {
   .counselors {
     position: relative;
-    left: 100px;
+    left: 120px;
     grid-template-columns: 350px 350px;
   }
 }
@@ -693,9 +703,6 @@ form > .card > p {
   .program-links {
     margin: 70px 0 0 0;
     width: 100%;
-  }
-  .gradient {
-    margin: 10px;
   }
   .left-border.card {
     width: auto;
@@ -839,9 +846,6 @@ form > .card > p {
   .logo img {
     left: 55px;
     top: 50px;
-  } 
-  .gradient a{
-    width: unset;
   }
    .question:last-child, .category:last-child {
     margin-bottom: 100px;
@@ -869,6 +873,7 @@ form > .card > p {
   .contact-landing {
     padding-top: 120px;
     min-height: 100vh;
+    padding-bottom: 40vh;
   }
   .contact-links {
     display: flex;
@@ -894,7 +899,7 @@ form > .card > p {
   }
   .counselor img {
     float: unset;
-    shape-outside: unset;
+    /* shape-outside: unset; */
     top: 130px;
     left: 0;
     transform: scale(.65);
@@ -903,11 +908,13 @@ form > .card > p {
     position: relative;
     padding: 10px 20% 10px 35%;
     width: auto;
+    max-width: 100vw;
+    white-space: normal;
   }
   .counselor p {
     border-radius: 0;
     left: 0;
     top: -40px;
-    width: auto;
+    width: 100vw;
   }
 }

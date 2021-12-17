@@ -12,9 +12,9 @@ export default function Counselors() {
     }, [])
 
     function getCounselors(){
-        fetch('https://changing-ways.herokuapp.com/counselors')
+        fetch('https://changing-ways-backend.herokuapp.com/api/counselors?populate=*')
         .then(response => response.json())
-        .then(data => setCounselors(data))
+        .then(data => setCounselors(data.data))
     }
 
     function loadingAnimation(){
@@ -29,12 +29,12 @@ export default function Counselors() {
            </Helmet>
             {counselors.map(counselor => (
                 <div key={counselor.id} className="counselor">
-                <img alt={counselor.name} src={`${counselor.image[0].url}`} />
+                <img alt={counselor.attributes.Name} src={`${counselor.attributes.Image.data.attributes.url}`} />
                 <div className="id">
-                    <h3>{counselor.name}</h3>
-                    <h4>{counselor.title}</h4>
+                    <h3>{counselor.attributes.Name}</h3>
+                    <h4>{counselor.attributes.Title}</h4>
                 </div>
-                <p>{counselor.biography}</p>
+                <p>{counselor.attributes.Biography}</p>
             </div>
             ))}
        </div>

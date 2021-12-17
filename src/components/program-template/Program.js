@@ -14,61 +14,45 @@ export default function Program(props) {
     }, [props.match.params.id])
 
     function getProgramcontent(props){
-        fetch(`https://changing-ways.herokuapp.com/programs/${props.match.params.id}`)
+        fetch(`https://changing-ways-backend.herokuapp.com/api/programs/${props.match.params.id}?populate=*`)
         .then(response => response.json())
-        .then(data => setProgram(data))
+        .then(data => setProgram(data.data))
     }
 
     function loadingAnimation(){
         gsap.from('.card', { opacity: 0, duration: .7, stagger: .15 })
     }
-
-    const {
-        title,
-        description,
-        calendar_events,
-        resources,
-        blockOne,
-        blockTwo,
-        blockThree,
-        blockFour,
-        blockFive,
-        } = program;
         
-
     return (
-       <main className="content">
+        <main className="content">
+       {program.attributes && <>
            <Helmet>
-               <title>{`${title} | Changing Ways `}</title>
-               <meta name="description" content ={description}></meta>
+               <title>{`${program.attributes.Title} | Changing Ways `}</title>
+               <meta name="description" content ={program.attributes.Description}></meta>
            </Helmet>
             <div className="container">
                 <div className="cards">
                     <div className="left-border card">
-                        <h1>{title}</h1>
-                        <p>{description}</p>
+                         <h1>{program.attributes.Title}</h1>
+                        <p>{program.attributes.Description}</p>
                     </div>
-                    {blockOne && <ReactMarkdown className="card" children={blockOne} />}
-                    {/* <div className="card">
-                        <h3>How to Sign Up</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis molestiae fugit libero rerum voluptates. Quisquam aut maxime sunt. Accusantium iusto neque officiis repudiandae assumenda placeat, odit aliquam quam vero esse nobis amet eos perferendis repellat, veritatis reiciendis, voluptatibus harum. Nesciunt?</p>
-                    </div> */}
+                    {program.attributes.BlockOne && <ReactMarkdown className="card" children={program.attributes.BlockOne} />}
                 </div>
-                {resources && <div className="resources">
+                {program.attributes.Resources && <div className="resources">
                     <div className="card">
                         <h3>Resources</h3>
-                        <ReactMarkdown children={resources} />
+                        <ReactMarkdown children={program.attributes.Resources} />
                     </div>
                 </div>}
             </div>
-            <div className="card calendar">
-                <CalendarWrapper events={calendar_events} />
-            </div>
-            {/* {blockOne && <ReactMarkdown className="card" children={blockOne} />} */}
-            {blockTwo && <ReactMarkdown className="card" children={blockTwo} />}
-            {blockThree && <ReactMarkdown className="card" children={blockThree} />}
-            {blockFour && <ReactMarkdown className="card" children={blockFour} />}
-            {blockFive && <ReactMarkdown className="card" children={blockFive} />}
+            {program.attributes.calendar_events.data && <div className="card calendar">
+                <CalendarWrapper events={program.attributes.calendar_events.data} />
+            </div>}
+            {program.attributes.BlockTwo && <ReactMarkdown className="card" children={program.attributes.BlockTwo} />}
+            {program.attributes.BlockThree && <ReactMarkdown className="card" children={program.attributes.BlockThree} />}
+            {program.attributes.BlockFour && <ReactMarkdown className="card" children={program.attributes.BlockFour} />}
+            {program.attributes.BlockFive && <ReactMarkdown className="card" children={program.attributes.BlockFive} />}
+       </>}
        </main>
     )
 }

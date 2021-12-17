@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import logo from '../images/logo.png'
 import { Link } from 'react-router-dom'
 
 export default function Navbar(props) {
@@ -25,7 +24,7 @@ export default function Navbar(props) {
     return (
         <nav className={burgIsActive ? 'full-length' : null}>
             <Link onClick={handleCollapse} to="/" className="logo">
-                <img src='https://res.cloudinary.com/detour-digital/image/upload/v1634227716/logo_d74215628e.png?60193.799999952316' alt="Family Violence Action Society" srcSet="" />
+                <img src='https://res.cloudinary.com/changing-ways-photo-archive/image/upload/v1639720996/thumbnail_changing_ways_logo_434e12251f.png?updated_at=2021-12-17T06:03:17.580Z' alt="Changing Ways" srcSet="" />
             </Link>
             <div className={`${burgIsActive ? 'reveal-links' : null} links`}>
                 <div onClick={programLinkToggle} className='programs'>
@@ -35,7 +34,7 @@ export default function Navbar(props) {
                             <Link
                                 key={program.id}
                                 onClick={handleCollapse}
-                                to={`/program/${program.url}/${program.id}`}>{program.title}
+                                to={`/program/${program.attributes.Url}/${program.id}`}>{program.attributes.Title}
                             </Link>
                         ))}
                     </div>

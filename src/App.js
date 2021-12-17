@@ -19,9 +19,9 @@ function App() {
   }, [])
 
   function fetchPrograms(){
-    fetch('https://changing-ways.herokuapp.com/programs')
+    fetch('https://changing-ways-backend.herokuapp.com/api/programs')
         .then(response => response.json())
-        .then(data => setPrograms(data))
+        .then(data => setPrograms(data.data))
   }
 
   return (
@@ -32,7 +32,7 @@ function App() {
         />
           <Switch>
               <Route exact path ='/' 
-                render={(props) => (
+                render={() => (
                   <Homepage
                     programs={programs}
                   />

@@ -4,7 +4,7 @@ import CalendarWrapper from '../utilities/CalendarWrapper'
 import CuratorWidget from '../utilities/CuratorWidget'
 import GradientLink from './GradientLink'
 import 'tui-calendar/dist/tui-calendar.css'
-import BGImage from './background.svg'
+// import BGImage from './background.svg'
 import Helmet from 'react-helmet'
 import gsap from "gsap"
 
@@ -22,14 +22,14 @@ function Homepage(props) {
     }, []);
 
     function getCalendarEvents(){
-        fetch('https://changing-ways.herokuapp.com/calendar-events')
+        fetch('https://changing-ways-backend.herokuapp.com/api/calendar-events')
         .then(response => response.json())
-        .then(data => setCalendarEvents(data))
+        .then(data => setCalendarEvents(data.data))
     }
     function getAbout(){
-        fetch('https://changing-ways.herokuapp.com/about')
+        fetch('https://changing-ways-backend.herokuapp.com/api/about')
         .then(response => response.json())
-        .then(data => setAbout(data) )
+        .then(data => setAbout(data.data.attributes) )
     }
 
     function loadingAnimation(){
@@ -45,13 +45,13 @@ function Homepage(props) {
                 style={{
                     height: '150vh',
                     width: '100vw',
-                    backgroundImage: `url(${BGImage})`,
+                    background: 'linear-gradient(317deg, rgba(50,154,214,0.6849144067657128) 0%, rgba(151,88,163,0.7663750809230161) 100%)'
                 }}
             />
         </Background>
         <Helmet>
             <title>Changing Ways</title>
-            <meta name="description" content={about.about}/>
+            <meta name="description" content={about.About}/>
         </Helmet>
         <div className="content">
             <div className="top">
@@ -65,7 +65,7 @@ function Homepage(props) {
                 </div>
                 <div className="left-border card">
                     <h1>Changing Ways</h1>
-                    <p>{about.about}</p>
+                    <p>{about.About}</p>
                 </div>
             </div>
             <div className="card calendar">

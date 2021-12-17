@@ -14,9 +14,9 @@ export default function Faq() {
     }, []);
 
     function getFaqs(){
-        fetch('https://changing-ways.herokuapp.com/faq-categories')
+        fetch('https://changing-ways-backend.herokuapp.com/api/faq-categories?populate=*')
         .then(response => response.json())
-        .then(data => setFaqs(data))
+        .then(data => setFaqs(data.data))
     }
 
     function loadingAnimation(){
@@ -32,21 +32,22 @@ export default function Faq() {
             </Helmet>
         {faqs.length > 2 && <div className="question-categories">
             {faqs.map(faq => (
-                <AnchorLink key={faq.id + 1000} offset='100' href={`#${faq.id}`}>{faq.category}</AnchorLink>
+                <AnchorLink key={faq.id + 1000} offset='100' href={`#${faq.id}`}>{faq.attributes.Category}</AnchorLink>
             ))}
         </div>}
         <div className="questions">
             <h1>Frequently Asked Questions</h1>
             {faqs.map(faq => (
                 <div key={`${faq.id}`} id={`${faq.id}`} className="category">
-                    <h2>{faq.category}</h2>
-                    {faq.faqs.map(faqs => (
+                    <h2>{faq.attributes.Category}</h2>
+                    {faq.attributes.faqs.data.map(faqs => (
                         <Question 
                             key={faqs.id}
                             faqs={faqs}
                         />
                     ))}
                 </div>
+                
             ))}
         </div>
     </main>

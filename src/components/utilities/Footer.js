@@ -16,34 +16,34 @@ export default function Footer() {
 
     /* Fetch Footer Data */
     function getAboutText(){
-        fetch('https://changing-ways.herokuapp.com/about')
+        fetch('https://changing-ways-backend.herokuapp.com/api/about')
         .then(response => response.json())
-        .then(data => setAboutText(data))
+        .then(data => setAboutText(data.data))
     }
 
     function getHotlines(){
-        fetch('https://changing-ways.herokuapp.com/hotlines')
+        fetch('https://changing-ways-backend.herokuapp.com/api/hotlines')
         .then(response => response.json())
-        .then(data => setHotlines(data))
+        .then(data => setHotlines(data.data))
     }
 
     function getLinks(){
-        fetch('https://changing-ways.herokuapp.com/links')
+        fetch('https://changing-ways-backend.herokuapp.com/api/links')
         .then(response => response.json())
-        .then(data => setLinks(data))
+        .then(data => setLinks(data.data))
     }
 
     function getPartners(){
-        fetch('https://changing-ways.herokuapp.com/partners')
+        fetch('https://changing-ways-backend.herokuapp.com/api/partners?populate=*')
         .then(response => response.json())
-        .then(data => setPartners(data))
+        .then(data => setPartners(data.data))
     }
 
     return (
         <footer>
             <div className="about">
                 <h3>About Us</h3>
-                <p>{aboutText.about}</p>
+               {aboutText.attributes && <p>{aboutText.attributes.About}</p>}
                 <div className="social-icons">
                     <a href="https://www.facebook.com/pages/category/Community-Organization/Family-Violence-Action-Society-564883023666129/">
                         <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -57,20 +57,20 @@ export default function Footer() {
                 <div>
                     <p className="link-header">Hotlines</p>
                     {hotlines.map(hotline => (
-                        <a key={hotline.id} href={`tel:${hotline.phone}`}>{hotline.name}</a>
+                        <a key={hotline.id} href={`tel:${hotline.attributes.Phone}`}>{hotline.attributes.Name}</a>
                     ))}
                 </div>
                 <div>
                     <p className="link-header">Links</p>
                     {links.map(link => (
-                        <a key={link.id} href={`${link.link}`}>{link.name}</a>
+                        <a key={link.id} href={`${link.attributes.Link}`}>{link.attributes.Name}</a>
                     ))}
                 </div>
             </div>
             <div className="partners">
                     {partners.map(partner => (
-                        <a href={partner.link}>
-                            <img key={partner.id} src={`${partner.logo.url}`} alt={partner.title} />
+                        <a key={partner.id} href={partner.attributes.Link}>
+                           <img src={`${partner.attributes.Logo.data.attributes.url}`} alt={partner.attributes.Title} />
                         </a>
                     ))}
             </div>
