@@ -4,13 +4,35 @@ import Calendar from '@toast-ui/react-calendar'
   class CalendarWrapper extends React.Component {
     calendarRef = React.createRef();
 
-    state = {
-      schedule: [],
-      year: null,
-      monthView: '',
-      monthNames: [ "January", "February", "March", "April", "May", "June", "July", 
-        "August", "September", "October", "November", "December" ]
-      }
+    constructor(props) {
+      super(props);
+      this.state = {
+        schedule: [],
+        year: null,
+        monthView: '',
+        monthNames: [ "January", "February", "March", "April", "May", "June", "July", 
+          "August", "September", "October", "November", "December" ]
+        }
+    }
+  
+    componentDidMount() {
+      this.initDate()
+      this.props.events.forEach(events => {
+        events.calendarId = events.id
+        events.category = 'time'
+        events.title = events.attributes.Title
+        events.body = events.attributes.Body
+        events.start = events.attributes.Start
+        events.end = events.attributes.End
+      })
+      this.setState({ schedule: this.props.events })
+    }
+
+    initDate = () => {
+      const date = new Date()
+      this.setState({ monthView: date.getMonth() })
+      this.setState({ year: date.getYear() })
+    }
 
     componentDidUpdate(prevProps) {
       this.props.events.forEach(events => {
@@ -23,7 +45,7 @@ import Calendar from '@toast-ui/react-calendar'
       })
       if (this.props.events !== prevProps.events) {
         this.setState({ schedule: this.props.events })
-        // Initialize Date For Calendar Header
+        // // Initialize Date For Calendar Header
         const date = new Date()
         this.setState({ monthView: date.getMonth() })
         this.setState({ year: date.getYear() })
@@ -59,13 +81,13 @@ import Calendar from '@toast-ui/react-calendar'
             <button className="calendar_control" onClick={this.handleClickPrevButton}>Previous</button>
             <button className="calendar_control" onClick={this.handleClickNextButton}>Next</button>
           </div>
-          <Calendar
+          {this.props.events && <Calendar
             ref={this.calendarRef}
             view='month'
             isReadOnly={true}
             useDetailPopup={true}
             schedules={this.state.schedule}
-          />
+          />}
         </>
       );
     }

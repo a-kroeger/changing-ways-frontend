@@ -21,20 +21,20 @@ import emailjs from 'emailjs-com'
                 <div className="form-content">
                 <form onSubmit={sendEmail}>                   
                 <h1>General Inquiries</h1>
-                    <div className="">
-                        <input type="text" className="" placeholder="Name" name="from_name"/>
+                    <div>
+                        <input type="text" placeholder="Name" name="from_name"/>
                     </div>
-                    <div className="">
-                        <input type="text" className="" placeholder="Phone Number" name="phone"/>
+                    <div>
+                        <input type="text" placeholder="Phone Number" name="phone"/>
                     </div>
-                    <div className="">
-                        <input type="email" className="" placeholder="Email Address" name="email"/>
+                    <div>
+                        <input type="email" placeholder="Email Address" name="email"/>
                     </div>
-                    <div className="">
-                        <textarea className="" id="" cols="30" rows="8" placeholder="What can we help you with today?" name="message"></textarea>   
+                    <div>
+                        <textarea placeholder="What can we help you with today?" name="message"></textarea>   
                     </div>
-                    <div className="">
-                        <input type="submit" required className="" value="Send Message"></input> 
+                    <div>
+                        <input type="submit" required value="Send Message"></input> 
                     </div>
                 </form>
                 </div>

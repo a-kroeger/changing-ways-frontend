@@ -18,7 +18,7 @@ export default class CuratorWidget extends React.Component {
         // add a small timeout to give it time to load
         setTimeout(() => {
           resolve(true);
-        }, 100);
+        }, 300);
       };
     });
   }

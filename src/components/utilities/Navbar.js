@@ -30,7 +30,8 @@ export default function Navbar(props) {
                 <div onClick={programLinkToggle} className='programs'>
                     <div className={`${programLinksAreActive ? 'showDropdown' : null} dropdown`}>Programs</div>
                     <div className={`${programLinksAreActive ? 'showDropdown' : null} drop-links`}>
-                        {props.programs.map(program => (
+                        {console.log(props.programs)}
+                        {props.programs.filter(program => !program.attributes.Title.includes("About Us")).map(program => (
                             <Link
                                 key={program.id}
                                 onClick={handleCollapse}
@@ -38,8 +39,9 @@ export default function Navbar(props) {
                             </Link>
                         ))}
                     </div>
+
                 </div>
-                <Link onClick={handleCollapse} to="/counselors">Our Counselors</Link>
+                <Link onClick={handleCollapse} to="/program/about/4">About Us</Link>
                 <Link onClick={handleCollapse} to="/faq">FAQ</Link>
                 <Link onClick={handleCollapse} to="/contact">Contact Us</Link>
             </div>

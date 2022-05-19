@@ -2,27 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { Helmet } from "react-helmet"
 import ReactMarkdown from 'react-markdown'
 import CalendarWrapper from '../utilities/CalendarWrapper'
-import gsap from 'gsap'
+import Spinner from '../utilities/Spinner'
+import axios from 'axios'
 
 export default function Program(props) {
 
     const [program, setProgram] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
 
     useEffect(() => {
         getProgramcontent(props);
-        loadingAnimation();
     }, [props.match.params.id])
 
     function getProgramcontent(props){
-        fetch(`https://changing-ways-backend.herokuapp.com/api/programs/${props.match.params.id}?populate=*`)
-        .then(response => response.json())
-        .then(data => setProgram(data.data))
-    }
-
-    function loadingAnimation(){
-        gsap.from('.card', { opacity: 0, duration: .7, stagger: .15 })
+        setIsLoading(true)
+        axios.get(`https://changing-ways-backend.herokuapp.com/api/programs/${props.match.params.id}?populate=*`).then(res => {
+            setProgram(res.data.data)
+            setIsLoading(false)
+        })
     }
         
+    if ( isLoading ) return <Spinner />;
+
     return (
         <main className="content">
        {program.attributes && <>
@@ -45,7 +47,7 @@ export default function Program(props) {
                     </div>
                 </div>}
             </div>
-            {program.attributes.calendar_events.data && <div className="card calendar">
+            {program.attributes.calendar_events.data.length > 0 && <div className="card calendar">
                 <CalendarWrapper events={program.attributes.calendar_events.data} />
             </div>}
             {program.attributes.BlockTwo && <ReactMarkdown className="card" children={program.attributes.BlockTwo} />}

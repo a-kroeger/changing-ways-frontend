@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Question from './Question'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import gsap from 'gsap'
+import Spinner from '../utilities/Spinner'
 import { Helmet } from "react-helmet"
+import axios from 'axios'
 
 export default function Faq() {
 
     const [faqs, setFaqs] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
         getFaqs();
-        loadingAnimation();
     }, []);
 
     function getFaqs(){
-        fetch('https://changing-ways-backend.herokuapp.com/api/faq-categories?populate=*')
-        .then(response => response.json())
-        .then(data => setFaqs(data.data))
+        setLoading(true)
+        axios.get('https://changing-ways-backend.herokuapp.com/api/faq-categories?populate=*').then(res => {
+            setFaqs(res.data.data)
+            setLoading(false)
+        })
     }
 
-    function loadingAnimation(){
-        gsap.from('.question-categories', { duration: .8, left: '-500px' })
-        gsap.from('.questions', { duration: 2, opacity: '0' })
-    }
+    if (loading) return <Spinner />
 
     return (
         <main className="faq">

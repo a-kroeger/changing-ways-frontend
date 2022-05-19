@@ -1,51 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { Parallax, Background } from 'react-parallax'
-import CalendarWrapper from '../utilities/CalendarWrapper'
 import CuratorWidget from '../utilities/CuratorWidget'
 import GradientLink from './GradientLink'
+import MailchimpFormContainer from '../utilities/MailchimpFormContainer'
 import 'tui-calendar/dist/tui-calendar.css'
-// import BGImage from './background.svg'
+import Spinner from '../utilities/Spinner'
 import Helmet from 'react-helmet'
-import gsap from "gsap"
+import axios from 'axios'
 
 function Homepage(props) {
 
     /* Initialize State */
-    const [calendarEvents, setCalendarEvents] = useState([])
     const [about, setAbout] = useState([])
+    const [loading, setLoading] = useState(true)
     
     /* OnLoad Functions */
     useEffect(()=>{
-        getCalendarEvents();
         getAbout()
-        loadingAnimation();
     }, []);
 
-    function getCalendarEvents(){
-        fetch('https://changing-ways-backend.herokuapp.com/api/calendar-events')
-        .then(response => response.json())
-        .then(data => setCalendarEvents(data.data))
-    }
     function getAbout(){
-        fetch('https://changing-ways-backend.herokuapp.com/api/about')
-        .then(response => response.json())
-        .then(data => setAbout(data.data.attributes) )
+        axios.get('https://changing-ways-backend.herokuapp.com/api/about').then(res => {
+            setAbout(res.data.data.attributes)
+            setLoading(false)
+        })
     }
 
-    function loadingAnimation(){
-        gsap.from('.react-parallax-background-children', { duration: 4, top:'-300px', ease: 'back' })
-        gsap.from('.card h1, .card p, .card', { opacity: 0, duration: .6, delay: 1 })
-        gsap.from('.program-links', { opacity: 0, duration: .3, delay: 1 })
-    }
+    if (loading) return <Spinner />
 
     return (
-        <Parallax strength={1000}>
+        <Parallax strength={1600}>
          <Background className="custom-bg">
             <div
                 style={{
-                    height: '150vh',
+                    height: '85vh',
                     width: '100vw',
-                    background: 'linear-gradient(317deg, rgba(50,154,214,0.6849144067657128) 0%, rgba(151,88,163,0.7663750809230161) 100%)'
+                    background: 'linear-gradient(317deg, rgba(50,154,214,0.8849144067657128) 0%, rgba(151,88,163,0.9663750809230161) 100%)'
                 }}
             />
         </Background>
@@ -68,12 +58,8 @@ function Homepage(props) {
                     <p>{about.About}</p>
                 </div>
             </div>
-            <div className="card calendar">
-                <CalendarWrapper
-                    events={calendarEvents}
-                />
-            </div>
             <CuratorWidget feedId="3170ab9c-d755-40d7-8281-5ce7a99abd58" />
+            <MailchimpFormContainer />
         </div>
         </Parallax>
     )
