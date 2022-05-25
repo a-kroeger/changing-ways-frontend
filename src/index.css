@@ -1,4 +1,6 @@
 /* Reset */
+@import url("https://use.typekit.net/ttz8wkf.css");
+
 html,
 body,
 div,
@@ -19,7 +21,7 @@ pre
 {
     font-size: 100%;
     font-weight: normal;
-    font-family: 'Graphie', Helvetica, sans-serif;
+    font-family: graphie, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 
@@ -54,7 +56,9 @@ img
 svg {
   display: block;
 }
-
+p {
+  font-weight: 400;
+}
 /* Navigation Styling */
 nav {
   position: fixed;
@@ -77,7 +81,6 @@ nav {
   display: inherit;
 }
 .links a, .dropdown {
-  font-family: 'Graphie', Helvetica, sans-serif;
   position: relative;
   color: #000;
   text-decoration: none;
@@ -227,7 +230,6 @@ footer {
 }
 .card p {
   color: #9758a3;
-  font-weight: 100;
   line-height: 1.5;
   font-size: 1.3rem;
 }
@@ -499,9 +501,9 @@ footer {
   color: #fff;
   font-weight: 200;
   font-size: 1.3rem;
-  padding: 100px;
+  padding: 80px;
   border-radius: 100%;
-  margin: 0 50px;
+  margin: 0 10px;
   transition: opacity 300ms ease;
 }
 .contact-links a:hover {
@@ -544,6 +546,10 @@ form > div {
 }
 .form-content input, .form-content textarea {
   width: 90%;
+}
+input.date-picker {
+  width: 90%;
+  padding: 15px;
 }
 input, textarea {
   margin: 10px auto;
@@ -733,6 +739,8 @@ form > .card > p {
   padding: 8px;
   margin-top: 10px;
   transition: all 200ms linear;
+  font-size: 1.2rem;
+  color: #000;
 }
 
 .mailchimp-form > div {
@@ -746,7 +754,6 @@ form > .card > p {
 
 .mailchimp-form button:hover {
   background-color: transparent;
-  color: #fff;
 }
 
 @media screen and (max-width: 1540px) {

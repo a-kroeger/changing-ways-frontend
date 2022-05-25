@@ -47,9 +47,8 @@ import emailjs from 'emailjs-com'
                     </div>
                     <div className="">
                         <p>Probation Order Expires</p>
-                        <input type="date" className=""  name="probation_expires"/>
+                        <input type="date" className="date-picker"  name="probation_expires"/>
                     </div>
-                    <div className="programs">
                         <p>Program Or Service Needed</p>
                         <input type="radio" name="program_service" id="0" onChange={handleInputChange} value="Choices: Intimate Partner Violence Group for Men" />
                         <label htmlFor="0"> Choices: Intimate Partner Violence Group for Men</label>
@@ -69,7 +68,6 @@ import emailjs from 'emailjs-com'
                         <input type="radio" name="program_service" id="5" onChange={handleInputChange} value="Elder Abuse"/>
                         <label htmlFor="5"> Elder Abuse</label>
                         <input id="radio-value" type="text" name="program" />
-                    </div>
                     <div> 
                     </div>
                     <div className="">

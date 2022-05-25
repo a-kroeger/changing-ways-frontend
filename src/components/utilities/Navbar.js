@@ -30,7 +30,6 @@ export default function Navbar(props) {
                 <div onClick={programLinkToggle} className='programs'>
                     <div className={`${programLinksAreActive ? 'showDropdown' : null} dropdown`}>Programs</div>
                     <div className={`${programLinksAreActive ? 'showDropdown' : null} drop-links`}>
-                        {console.log(props.programs)}
                         {props.programs.filter(program => !program.attributes.Title.includes("About Us")).map(program => (
                             <Link
                                 key={program.id}
