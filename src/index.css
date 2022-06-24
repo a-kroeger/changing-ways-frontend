@@ -204,10 +204,9 @@ footer {
 
 .content {
  padding: 300px 10px;
- max-width: 1500px;
+ max-width: 1000px;
  margin: auto;
  min-height: 100vh;
-
 }
 .card {
   background: #fff;
@@ -322,6 +321,7 @@ footer {
 /* Program Page Styling */
 .container {
   display: flex;
+  margin: auto;
 }
 .resources {
   display: inherit;
@@ -736,20 +736,20 @@ form > .card > p {
 }
 
 /* Mailchimp Form */
-.mailchimp-form {
+.mailchimp-container > div {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
   z-index: 100;
 }
-.mailchimp-form input, .mailchimp-form button {
+.mailchimp-container > div input, .mailchimp-container > div button {
   width: 250px;
   position: relative;
-  margin: auto;
+  margin: 10px auto;
 }
 
-.mailchimp-form button {
+.mailchimp-container button {
   font-family: 'Graphie';
   background-color: #9758a3;
   cursor: pointer;
@@ -761,7 +761,7 @@ form > .card > p {
   color: #000;
 }
 
-.mailchimp-form > div {
+.mailchimp-container > div {
   width: fit-content;
   background: #fff;
   margin: auto;
@@ -770,7 +770,7 @@ form > .card > p {
   border-radius: 10px;;
 }
 
-.mailchimp-form button:hover {
+.mailchimp-container button:hover {
   background-color: transparent;
 }
 
