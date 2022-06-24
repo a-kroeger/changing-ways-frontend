@@ -187,10 +187,12 @@ footer {
   font-weight: 100;
 }
 .footer-links a {
-  white-space: nowrap;
+  border-left: 1px #F6F6F6 solid;
   color: #fff;
   text-decoration: none;
-  line-height: 1.4;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  padding-left: 5px;
   transition: opacity 200ms linear;
 }
 .footer-links a:hover, .social-icons a:hover {
@@ -209,28 +211,38 @@ footer {
 }
 .card {
   background: #fff;
+  color: #9758a3;
   margin: 50px 0;
   border-top: var(--border-style);
   padding: 30px;
+  font-weight: 600;
 }
 .content > .card:last-child{
   margin-bottom: 200px;
 }
-.card h1 {
-  color: #9758a3;
-  font-size: 2.5rem;
+.card h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
-  font-weight: 600;
+}
+.card h1 {
+  font-size: 2.5rem;
+}
+.card h2 {
+  font-size: 2rem;
 }
 .card h3 {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: #696969;
-  margin-bottom: 10px;
+}
+.card h4 {
+  font-size: 1.1rem;
+}
+.card h5 {
+  font-size: 0.9rem;
+}
+.card h6 {
+  font-size: 0.7rem;
 }
 .card p {
-  color: #9758a3;
-  line-height: 1.5;
+  line-height: 1.4;
   font-size: 1.3rem;
 }
 .card a {
@@ -239,13 +251,19 @@ footer {
   line-height: 1.6;
   color: #329ad6;
 }
-/* .cards .card {
-  width: 90%;
-} */
+.card ul li {
+  font-weight: 300;
+  list-style-type: circle;
+}
 .card:only-child {
   border-top: none;
   border-left: var(--border-style);
   margin-top: 0;
+}
+.card img {
+  max-width: 100%;
+  margin: 10px auto;
+  display: block;
 }
 .left-border {
   border-top: none;
@@ -272,7 +290,7 @@ footer {
   font-weight: 300;
   text-align: center;
   position: relative;
-  background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(141,198,63,1) 100%);
+  background: #9758a3;
   border-radius: 50px;
   z-index: 1;
 }
@@ -283,7 +301,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(50,154,214,0.8365998000241397) 100%);
+  background-image: linear-gradient(90deg, rgba(50,154,214,0.8365998000241397), rgba(141,198,63,1) 100%);
   z-index: -1;
   transition: opacity 0.26s ease-in;
   opacity: 0;
@@ -293,7 +311,7 @@ footer {
   opacity: 1;
 }
 .gradient a {
-  color: #000;
+  color: #fff;
   text-decoration: none;
   line-height: 3.5;
   display: inline-block;
@@ -416,7 +434,7 @@ footer {
   font-size: 2rem;
 }
 .questions {
-  margin-left: 330px;
+  margin-left: 370px;
   min-height: 90vh;
 }
 .category > .left-border {

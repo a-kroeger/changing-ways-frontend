@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Parallax, Background } from 'react-parallax'
 import CuratorWidget from '../utilities/CuratorWidget'
 import GradientLink from './GradientLink'
 import MailchimpFormContainer from '../utilities/MailchimpFormContainer'
@@ -29,16 +28,7 @@ function Homepage(props) {
     if (loading) return <Spinner />
 
     return (
-        <Parallax strength={1600}>
-         <Background className="custom-bg">
-            <div
-                style={{
-                    height: '85vh',
-                    width: '100vw',
-                    background: 'linear-gradient(317deg, rgba(50,154,214,0.8849144067657128) 0%, rgba(151,88,163,0.9663750809230161) 100%)'
-                }}
-            />
-        </Background>
+        <>
         <Helmet>
             <title>Changing Ways</title>
             <meta name="description" content={about.About}/>
@@ -61,7 +51,7 @@ function Homepage(props) {
             <CuratorWidget feedId="3170ab9c-d755-40d7-8281-5ce7a99abd58" />
             <MailchimpFormContainer />
         </div>
-        </Parallax>
+        </>
     )
 }
 
