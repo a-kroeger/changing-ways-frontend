@@ -76,6 +76,7 @@ nav {
 }
 .logo img{
   height: 50px;
+  transform: scale(0.9);
 }
 .links {
   display: inherit;
@@ -203,7 +204,7 @@ footer {
 
 
 .content {
- padding: 300px 10px;
+ padding: 140px 10px 300px 10px;
  max-width: 1000px;
  margin: auto;
  min-height: 100vh;
@@ -244,8 +245,10 @@ footer {
   line-height: 1.4;
   font-size: 1.3rem;
 }
-.card a {
+.resources > .card a{
   display: block;
+}
+.card a {
   text-decoration: none;
   line-height: 1.6;
   color: #329ad6;
@@ -736,6 +739,10 @@ form > .card > p {
 }
 
 /* Mailchimp Form */
+.mailchimp-container p {
+  margin-top: 30px;
+  text-align: center;
+}
 .mailchimp-container > div {
   display: flex;
   flex-direction: column;

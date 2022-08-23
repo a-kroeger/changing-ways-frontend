@@ -24,7 +24,7 @@ export default function Navbar(props) {
     return (
         <nav className={burgIsActive ? 'full-length' : null}>
             <Link onClick={handleCollapse} to="/" className="logo">
-                <img src='https://res.cloudinary.com/changing-ways-photo-archive/image/upload/v1639720996/thumbnail_changing_ways_logo_434e12251f.png?updated_at=2021-12-17T06:03:17.580Z' alt="Changing Ways" srcSet="" />
+                <img src='https://res.cloudinary.com/changing-ways-photo-archive/image/upload/v1660592289/thumbnail_green_logo_blue_arrow_402499b653.png?updated_at=2022-08-15T19:38:11.163Z' alt="Changing Ways" srcSet="" />
             </Link>
             <div className={`${burgIsActive ? 'reveal-links' : null} links`}>
                 <div onClick={programLinkToggle} className='programs'>
